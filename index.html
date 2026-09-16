@@ -1,103 +1,79 @@
 <!doctype html>
-<html lang="en">
+<html lang="ar" dir="rtl" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Abdulaziz Al-Hamdani — frontend developer from Oman designing clear interfaces for AI-powered products." />
+  <meta name="description" content="عبدالعزيز الحمداني — مطور واجهات أمامية من عُمان يصمم تجارب واضحة لمنتجات الذكاء الاصطناعي." />
   <meta name="theme-color" content="#10100f" />
-  <meta name="color-scheme" content="dark" />
+  <meta name="color-scheme" content="dark light" />
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Abdulaziz Al-Hamdani — Frontend & AI Developer" />
-  <meta property="og:description" content="Clear interfaces for AI-powered products, from Oman." />
+  <meta property="og:title" content="عبدالعزيز الحمداني — مطور الواجهات والذكاء الاصطناعي" />
+  <meta property="og:description" content="واجهات واضحة لمنتجات مدعومة بالذكاء الاصطناعي، من عُمان." />
   <meta property="og:image" content="assets/profile.jpg" />
   <link rel="canonical" href="https://azdriveai.github.io/a3o3ziz/" />
   <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
-  <title>Abdulaziz Al-Hamdani — Frontend & AI Developer</title>
+  <title data-i18n="title">عبدالعزيز الحمداني — مطور الواجهات والذكاء الاصطناعي</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&family=Noto+Kufi+Arabic:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
-  <a class="skip-link" href="#top">Skip to content</a>
+  <a class="skip-link" href="#top" data-i18n="skip">انتقل إلى المحتوى</a>
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Abdulaziz Al-Hamdani home"><span>AZ</span><small>ABDAZIIZ / PORTFOLIO</small></a>
-    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><i></i></button>
-    <nav class="nav" id="primary-nav" aria-label="Primary navigation">
-      <a class="nav-link is-active" href="#top" data-section="top">Home</a>
-      <a class="nav-link" href="#work" data-section="work">Work</a>
-      <a class="nav-link" href="#about" data-section="about">About</a>
-      <a class="nav-link" href="#services" data-section="services">Capabilities</a>
-      <a class="nav-link" href="#contact" data-section="contact">Contact</a>
+    <a class="brand" href="#top" aria-label="الصفحة الرئيسية لعبدالعزيز الحمداني"><span>AZ</span><small>ABDAZIIZ / PORTFOLIO</small></a>
+    <div class="header-tools">
+      <button class="lang-toggle" type="button" aria-label="Switch to English" data-lang-toggle>EN</button>
+      <button class="theme-toggle" type="button" aria-label="تفعيل الوضع الفاتح" data-theme-toggle><span class="theme-icon">☼</span><span data-i18n="themeButton">فاتح</span></button>
+      <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span data-i18n="menu">القائمة</span><i></i></button>
+    </div>
+    <nav class="nav" id="primary-nav" aria-label="التنقل الرئيسي">
+      <a class="nav-link is-active" href="#top" data-section="top" data-i18n="navHome">الرئيسية</a>
+      <a class="nav-link" href="#work" data-section="work" data-i18n="navWork">الأعمال</a>
+      <a class="nav-link" href="#about" data-section="about" data-i18n="navAbout">عنّي</a>
+      <a class="nav-link" href="#services" data-section="services" data-i18n="navServices">القدرات</a>
+      <a class="nav-link" href="#contact" data-section="contact" data-i18n="navContact">تواصل</a>
     </nav>
-    <a class="header-cta" data-event="hero_cta_click" href="mailto:openaziz00@gmail.com?subject=Project%20conversation">Let's talk <span>↗</span></a>
+    <a class="header-cta" data-event="hero_cta_click" href="mailto:openaziz00@gmail.com?subject=Project%20conversation"><span data-i18n="talk">لنتحدث</span> <span>↗</span></a>
   </header>
 
   <main id="top">
     <section class="hero section-anchor" aria-labelledby="hero-title" data-section-id="top">
-      <div class="hero-meta"><span>01 / 06</span><span>Muscat · Oman</span><span class="status"><i></i> Open to meaningful work</span></div>
+      <div class="hero-meta"><span>01 / 06</span><span data-i18n="location">مسقط · عُمان</span><span class="status"><i></i> <span data-i18n="status">متاح للعمل الهادف</span></span></div>
       <div class="hero-title-wrap">
-        <p class="eyebrow">Frontend developer · Applied AI</p>
-        <h1 id="hero-title"><span>I MAKE</span><span class="accent-outline">AI FEEL</span><span>USEFUL<span class="dot">.</span></span></h1>
-        <p class="hero-value">I design clear interfaces for AI-powered products — turning complex ideas into calm, useful experiences.</p>
-        <div class="hero-actions"><a class="button button-primary" data-event="hero_cta_click" href="#work">See selected work <span>↓</span></a><a class="button button-quiet" data-event="hero_cta_click" href="mailto:openaziz00@gmail.com?subject=Let's%20collaborate">Let's collaborate <span>↗</span></a></div>
+        <p class="eyebrow" data-i18n="heroEyebrow">مطور واجهات أمامية · ذكاء اصطناعي تطبيقي</p>
+        <h1 id="hero-title"><span data-i18n="heroTitle1">أجعل</span><span class="accent-outline" data-i18n="heroTitle2">الذكاء مفهوماً</span><span data-i18n="heroTitle3">ومفيداً<span class="dot">.</span></span></h1>
+        <p class="hero-value" data-i18n="heroValue">أصمم واجهات واضحة لمنتجات مدعومة بالذكاء الاصطناعي — أحوّل الأفكار المعقدة إلى تجارب هادئة ومفيدة.</p>
+        <div class="hero-actions"><a class="button button-primary" data-event="hero_cta_click" href="#work"><span data-i18n="seeWork">شاهد الأعمال المختارة</span> <span>↓</span></a><a class="button button-quiet" data-event="hero_cta_click" href="mailto:openaziz00@gmail.com?subject=Let's%20collaborate"><span data-i18n="collaborate">لنتعاون</span> <span>↗</span></a></div>
       </div>
-      <aside class="guide-card" aria-label="Welcome guide video">
-        <div class="guide-card-head"><span>Meet your guide</span><span class="guide-live"><i></i> Ready</span></div>
+      <aside class="guide-card" aria-label="دليل الترحيب بالفيديو">
+        <div class="guide-card-head"><span data-i18n="guideTitle">تعرّف على دليلك</span><span class="guide-live"><i></i> <span data-i18n="ready">جاهز</span></span></div>
         <div class="guide-video-wrap">
-          <video id="guide-video" class="guide-video" autoplay muted loop playsinline preload="metadata" poster="assets/anime-guide-reference.webp">
-            <source src="assets/anime-guide-intro-with-audio.mp4" type="video/mp4" />
-            Your browser does not support embedded video.
-          </video>
-          <button class="guide-sound" type="button" aria-label="Turn guide audio on" aria-pressed="false">Sound off <span>↗</span></button>
+          <video id="guide-video" class="guide-video" autoplay muted loop playsinline preload="metadata" poster="assets/anime-guide-reference.webp"><source src="assets/anime-guide-intro-with-audio.mp4" type="video/mp4" /></video>
+          <button class="guide-sound" type="button" aria-label="تشغيل صوت الدليل" aria-pressed="false"><span data-i18n="soundOff">الصوت متوقف</span> <span>↗</span></button>
         </div>
-        <p class="guide-caption">A short tour of<br /><strong>how I think and build.</strong></p>
+        <p class="guide-caption" data-i18n="guideCaption">جولة قصيرة في<br /><strong>طريقة تفكيري وبنائي.</strong></p>
       </aside>
-      <div class="hero-centerpiece" aria-hidden="true">
-        <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="photo-frame"><img src="assets/profile.jpg" width="500" height="500" alt="" fetchpriority="high" /><span class="photo-tag">A3O3ZIZ / 001</span></div>
-        <div class="signal">✦<span>curious<br />by default</span></div>
-      </div>
-      <div class="hero-bottom">
-        <p class="intro">Hi, I'm <strong>Abdulaziz</strong> — a frontend developer from Oman building thoughtful interfaces where complex systems feel simple to use.</p>
-        <a class="scroll-link" href="#work"><span>Explore the work</span><b>↓</b></a>
-        <div class="hero-note"><span>Currently building</span><strong>AI systems &amp; self-reviewing UX</strong></div>
-      </div>
+      <div class="hero-centerpiece" aria-hidden="true"><div class="orbit orbit-one"></div><div class="orbit orbit-two"></div><div class="photo-frame"><img src="assets/profile.jpg" width="500" height="500" alt="" fetchpriority="high" /><span class="photo-tag">A3O3ZIZ / 001</span></div><div class="signal">✦<span data-i18n="signal">فضولي<br />بطبيعتي</span></div></div>
+      <div class="hero-bottom"><p class="intro" data-i18n="intro">مرحباً، أنا <strong>عبدالعزيز</strong> — مطور واجهات أمامية من عُمان أبني تجارب مدروسة تجعل الأنظمة المعقدة سهلة الاستخدام.</p><a class="scroll-link" href="#work"><span data-i18n="explore">استكشف الأعمال</span><b>↓</b></a><div class="hero-note"><span data-i18n="buildingLabel">أبني حالياً</span><strong data-i18n="building">أنظمة ذكاء اصطناعي وتجارب UX تراجع نفسها</strong></div></div>
     </section>
 
-    <section class="work section section-anchor" id="work" aria-labelledby="work-title" data-section-id="work">
-      <div class="section-label"><span>02 / 06</span><span>Selected work</span></div>
-      <div class="work-head"><div><p class="eyebrow">Proof before promises</p><h2 id="work-title">Things I<br /><span>build and study.</span></h2></div><p>Small, honest case studies from the space between frontend craft, product clarity, and applied AI.</p></div>
-      <div class="work-grid">
-        <article class="work-card work-card-featured" data-event="work_case_open"><div class="work-card-top"><span>01 / Portfolio system</span><span>2025—26</span></div><div class="work-visual visual-portfolio"><span class="visual-word">AZ</span><span class="visual-caption">dark editorial / personal site</span></div><div class="work-card-body"><p class="eyebrow">Frontend · UX</p><h3>AbdaZiiz<br /><em>portfolio</em></h3><p>A personal site designed to make a developer's thinking, direction, and next conversation visible in one scroll.</p><div class="work-tags"><span>HTML / CSS / JS</span><span>LIVE SITE</span></div></div></article>
-        <article class="work-card" data-event="work_case_open"><div class="work-card-top"><span>02 / Guide experiment</span><span>2025—26</span></div><div class="work-visual visual-guide"><span class="visual-orbit"></span><span class="visual-word">GUIDE</span><span class="visual-caption">motion as orientation</span></div><div class="work-card-body"><p class="eyebrow">Interaction · Motion</p><h3>Meet your<br /><em>guide</em></h3><p>A compact video interaction that gives a portfolio a human entry point without making motion a requirement for understanding.</p><div class="work-tags"><span>VIDEO UI</span><span>ACCESSIBLE BY DEFAULT</span></div></div></article>
-        <article class="work-card" data-event="work_case_open"><div class="work-card-top"><span>03 / Research thread</span><span>Ongoing</span></div><div class="work-visual visual-reasoning"><span class="reasoning-line"></span><span class="visual-word">WHY?</span><span class="visual-caption">making systems explain themselves</span></div><div class="work-card-body"><p class="eyebrow">Applied AI · Research</p><h3>Visible<br /><em>reasoning</em></h3><p>An ongoing exploration of interfaces that help people understand an AI system's review, confidence, and next useful step.</p><div class="work-tags"><span>AI INTERFACES</span><span>IN PROGRESS</span></div></div></article>
-      </div>
-      <div class="proof-strip"><span>Open source by default</span><a data-event="github_click" href="https://github.com/AZDriveai/a3o3ziz" target="_blank" rel="noreferrer">View the build on GitHub <b>↗</b></a><span>Oman · Remote friendly</span></div>
-    </section>
+    <section class="work section section-anchor" id="work" aria-labelledby="work-title" data-section-id="work"><div class="section-label"><span>02 / 06</span><span data-i18n="workLabel">أعمال مختارة</span></div><div class="work-head"><div><p class="eyebrow" data-i18n="proof">الدليل قبل الوعود</p><h2 id="work-title" data-i18n="workTitle">أشياء<br /><span>أبنيها وأدرسها.</span></h2></div><p data-i18n="workIntro">دراسات حالة صغيرة وصادقة تقع بين حرفة الواجهات ووضوح المنتج والذكاء الاصطناعي التطبيقي.</p></div><div class="work-grid">
+      <article class="work-card work-card-featured" data-event="work_case_open"><div class="work-card-top"><span data-i18n="case1Top">01 / نظام المحفظة</span><span>2025—26</span></div><div class="work-visual visual-portfolio"><span class="visual-word">AZ</span><span class="visual-caption" data-i18n="case1Visual">موقع شخصي / تحريري داكن</span></div><div class="work-card-body"><p class="eyebrow" data-i18n="frontendUx">واجهات · تجربة مستخدم</p><h3>AbdaZiiz<br /><em data-i18n="portfolio">محفظة</em></h3><p data-i18n="case1Body">موقع شخصي يجعل تفكير المطور واتجاهه وفرصة المحادثة التالية واضحة في صفحة واحدة.</p><div class="work-tags"><span>HTML / CSS / JS</span><span data-i18n="liveSite">موقع حي</span></div></div></article>
+      <article class="work-card" data-event="work_case_open"><div class="work-card-top"><span data-i18n="case2Top">02 / تجربة الدليل</span><span>2025—26</span></div><div class="work-visual visual-guide"><span class="visual-orbit"></span><span class="visual-word">GUIDE</span><span class="visual-caption" data-i18n="case2Visual">الحركة كوسيلة توجيه</span></div><div class="work-card-body"><p class="eyebrow" data-i18n="motion">تفاعل · حركة</p><h3 data-i18n="case2Title">تعرّف على<br /><em>دليلك</em></h3><p data-i18n="case2Body">تفاعل فيديو صغير يمنح المحفظة مدخلاً إنسانياً دون أن تصبح الحركة شرطاً للفهم.</p><div class="work-tags"><span>VIDEO UI</span><span data-i18n="accessible">متاح للجميع</span></div></div></article>
+      <article class="work-card" data-event="work_case_open"><div class="work-card-top"><span data-i18n="case3Top">03 / مسار بحثي</span><span data-i18n="ongoing">مستمر</span></div><div class="work-visual visual-reasoning"><span class="reasoning-line"></span><span class="visual-word">WHY?</span><span class="visual-caption" data-i18n="case3Visual">نجعل الأنظمة تشرح نفسها</span></div><div class="work-card-body"><p class="eyebrow" data-i18n="aiResearch">ذكاء اصطناعي · بحث</p><h3 data-i18n="case3Title">تفكير<br /><em>مرئي</em></h3><p data-i18n="case3Body">استكشاف مستمر لواجهات تساعد الناس على فهم مراجعة نظام الذكاء الاصطناعي وثقته والخطوة التالية المفيدة.</p><div class="work-tags"><span>AI INTERFACES</span><span data-i18n="inProgress">قيد التطوير</span></div></div></article>
+    </div><div class="proof-strip"><span data-i18n="openSource">مفتوح المصدر افتراضياً</span><a data-event="github_click" href="https://github.com/AZDriveai/a3o3ziz" target="_blank" rel="noreferrer"><span data-i18n="github">شاهد البناء على GitHub</span> <b>↗</b></a><span data-i18n="remote">عُمان · مناسب للعمل عن بُعد</span></div></section>
 
-    <section class="about section section-anchor" id="about" aria-labelledby="about-title" data-section-id="about">
-      <div class="section-label"><span>03 / 06</span><span>Perspective</span></div>
-      <div class="about-grid"><div><p class="eyebrow">A work in progress, intentionally</p><h2 id="about-title">I turn <em>curiosity</em><br />into <span>useful things.</span></h2></div><div class="about-copy"><p>My journey into programming and artificial intelligence is still young, but the questions are big. I care about making complex technology feel clear, human, and genuinely helpful.</p><p>I build to learn: shaping frontend experiences, studying AI foundations, and testing better ways to help people understand intelligent systems.</p><a class="text-link" data-event="email_click" href="mailto:openaziz00@gmail.com?subject=Project%20conversation">Discuss a project <span>↗</span></a></div></div>
-      <div class="quote"><span>“</span><p>Collaboration is not an extra layer.<br /><strong>It is how better futures get designed.</strong></p><small>— A personal north star</small></div>
-    </section>
+    <section class="about section section-anchor" id="about" aria-labelledby="about-title" data-section-id="about"><div class="section-label"><span>03 / 06</span><span data-i18n="perspective">منظور</span></div><div class="about-grid"><div><p class="eyebrow" data-i18n="aboutEyebrow">مسيرة تتطور عن قصد</p><h2 id="about-title" data-i18n="aboutTitle">أحوّل <em>فضولي</em><br />إلى <span>أشياء مفيدة.</span></h2></div><div class="about-copy"><p data-i18n="aboutP1">رحلتي في البرمجة والذكاء الاصطناعي لا تزال في بدايتها، لكن أسئلتها كبيرة. أهتم بجعل التقنية المعقدة واضحة وإنسانية ومفيدة حقاً.</p><p data-i18n="aboutP2">أبني لأتعلم: أصمم تجارب الواجهات، أدرس أساسيات الذكاء الاصطناعي، وأختبر طرقاً أفضل لمساعدة الناس على فهم الأنظمة الذكية.</p><a class="text-link" data-event="email_click" href="mailto:openaziz00@gmail.com?subject=Project%20conversation"><span data-i18n="discuss">ناقش مشروعاً</span> <span>↗</span></a></div></div><div class="quote"><span>“</span><p data-i18n="quote">التعاون ليس طبقة إضافية.<br /><strong>إنه الطريقة التي نصمم بها مستقبلاً أفضل.</strong></p><small data-i18n="quoteAttribution">— بوصلة شخصية</small></div></section>
 
-    <section class="services section section-anchor" id="services" aria-labelledby="services-title" data-section-id="services">
-      <div class="section-label"><span>04 / 06</span><span>Capabilities</span></div>
-      <div class="services-intro"><div><p class="eyebrow">From first idea to useful interface</p><h2 id="services-title">A focused<br /><span>set of skills.</span></h2></div><p>I combine visual care with a learner's mindset to make digital products easier to use, understand, and improve.</p></div>
-      <div class="service-list"><article class="service-row"><span class="service-number">01</span><div><h3>Frontend development</h3><p>Responsive, accessible interfaces with a strong visual point of view and smooth interaction.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">02</span><div><h3>AI-powered experiences</h3><p>Exploring practical AI features that support people without hiding the important context.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">03</span><div><h3>Product clarity</h3><p>Turning complex ideas into clear flows, useful information architecture, and confident next steps.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article></div>
-    </section>
+    <section class="services section section-anchor" id="services" aria-labelledby="services-title" data-section-id="services"><div class="section-label"><span>04 / 06</span><span data-i18n="capabilities">القدرات</span></div><div class="services-intro"><div><p class="eyebrow" data-i18n="servicesEyebrow">من الفكرة الأولى إلى الواجهة المفيدة</p><h2 id="services-title" data-i18n="servicesTitle">مجموعة<br /><span>مركزة من المهارات.</span></h2></div><p data-i18n="servicesIntro">أجمع بين العناية البصرية وعقلية المتعلم لجعل المنتجات الرقمية أسهل استخداماً وفهماً وتحسيناً.</p></div><div class="service-list"><article class="service-row"><span class="service-number">01</span><div><h3 data-i18n="service1Title">تطوير الواجهات</h3><p data-i18n="service1Body">واجهات متجاوبة ومتاحة للجميع، لها رأي بصري واضح وتفاعل سلس.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">02</span><div><h3 data-i18n="service2Title">تجارب مدعومة بالذكاء الاصطناعي</h3><p data-i18n="service2Body">استكشاف ميزات عملية تدعم الناس دون إخفاء السياق المهم.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">03</span><div><h3 data-i18n="service3Title">وضوح المنتج</h3><p data-i18n="service3Body">تحويل الأفكار المعقدة إلى تدفقات واضحة وبنية معلومات مفيدة وخطوات تالية واثقة.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article></div></section>
 
-    <section class="focus section section-anchor" id="focus" aria-labelledby="focus-title" data-section-id="focus">
-      <div class="section-label"><span>05 / 06</span><span>What I'm exploring</span></div>
-      <div class="focus-head"><h2 id="focus-title">Current<br /><span>direction</span></h2><p>Three areas that keep pulling me forward — from the visible layer of a product to the reasoning underneath it.</p></div>
-      <div class="focus-grid"><article class="focus-card featured"><div class="card-index">01</div><div class="card-icon">◌</div><h3>Frontend<br />experiences</h3><p>Interfaces with rhythm, clarity, and a point of view — built to feel as good as they work.</p><div class="card-foot"><span>UI / UX</span><span>→</span></div></article><article class="focus-card"><div class="card-index">02</div><div class="card-icon">✦</div><h3>Applied<br />AI</h3><p>Learning how intelligent tools can support people without hiding the important parts.</p><div class="card-foot"><span>LEARNING</span><span>→</span></div></article><article class="focus-card"><div class="card-index">03</div><div class="card-icon">⌁</div><h3>Visible<br />reasoning</h3><p>Exploring interfaces that make an AI system's review and confidence easier to understand.</p><div class="card-foot"><span>RESEARCH</span><span>→</span></div></article></div>
-    </section>
+    <section class="focus section section-anchor" id="focus" aria-labelledby="focus-title" data-section-id="focus"><div class="section-label"><span>05 / 06</span><span data-i18n="exploring">ما أستكشفه</span></div><div class="focus-head"><h2 id="focus-title" data-i18n="focusTitle">الاتجاه<br /><span>الحالي</span></h2><p data-i18n="focusIntro">ثلاثة مجالات تدفعني إلى الأمام — من الطبقة المرئية للمنتج إلى المنطق الذي يعمل تحتها.</p></div><div class="focus-grid"><article class="focus-card featured"><div class="card-index">01</div><div class="card-icon">◌</div><h3 data-i18n="focus1Title">تجارب<br />الواجهات</h3><p data-i18n="focus1Body">واجهات بإيقاع ووضوح وشخصية — مصممة لتشعر بجودتها كما تعمل.</p><div class="card-foot"><span>UI / UX</span><span>→</span></div></article><article class="focus-card"><div class="card-index">02</div><div class="card-icon">✦</div><h3 data-i18n="focus2Title">ذكاء<br />اصطناعي تطبيقي</h3><p data-i18n="focus2Body">أتعلم كيف يمكن للأدوات الذكية دعم الناس دون إخفاء الأجزاء المهمة.</p><div class="card-foot"><span data-i18n="learning">تعلم</span><span>→</span></div></article><article class="focus-card"><div class="card-index">03</div><div class="card-icon">⌁</div><h3 data-i18n="focus3Title">تفكير<br />مرئي</h3><p data-i18n="focus3Body">استكشاف واجهات تجعل مراجعة نظام الذكاء الاصطناعي وثقته أسهل فهماً.</p><div class="card-foot"><span data-i18n="research">بحث</span><span>→</span></div></article></div></section>
 
-    <section class="contact section section-anchor" id="contact" aria-labelledby="contact-title" data-section-id="contact"><div class="contact-orb"></div><p class="eyebrow">Have a question, idea, or good challenge?</p><h2 id="contact-title">Let's make<br /><span>something clear.</span></h2><a class="contact-button" data-event="email_click" href="mailto:openaziz00@gmail.com?subject=Let's%20make%20something%20clear">openaziz00@gmail.com <span>↗</span></a><div class="contact-meta"><a href="tel:+96894642987">+968 9464 2987</a><span>Barka, Oman</span><span>© 2026 AbdaZiiz</span></div></section>
+    <section class="contact section section-anchor" id="contact" aria-labelledby="contact-title" data-section-id="contact"><div class="contact-orb"></div><p class="eyebrow" data-i18n="contactEyebrow">لديك سؤال أو فكرة أو تحدٍ جيد؟</p><h2 id="contact-title" data-i18n="contactTitle">لنجعل<br /><span>شيئاً واضحاً.</span></h2><a class="contact-button" data-event="email_click" href="mailto:openaziz00@gmail.com?subject=Let's%20make%20something%20clear">openaziz00@gmail.com <span>↗</span></a><div class="contact-meta"><a href="tel:+96894642987">+968 9464 2987</a><span data-i18n="barka">بركاء، عُمان</span><span>© 2026 AbdaZiiz</span></div></section>
   </main>
-  <footer class="site-footer"><span>ABDAZIIZ</span><span>Frontend · AI · Curiosity</span><a href="#top">Back to top ↑</a></footer>
+  <footer class="site-footer"><span>ABDAZIIZ</span><span data-i18n="footer">واجهات · ذكاء اصطناعي · فضول</span><a href="#top" data-i18n="backTop">العودة للأعلى ↑</a></footer>
 </body>
 </html>

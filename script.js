@@ -4,80 +4,33 @@ const sections = document.querySelectorAll('.section-anchor');
 const navLinks = document.querySelectorAll('.nav-link');
 const menuToggle = document.querySelector('.menu-toggle');
 const nav = document.querySelector('#primary-nav');
+const root = document.documentElement;
 
-const revealObserver = new IntersectionObserver((entries, observer) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    entry.target.classList.add('is-visible');
-    observer.unobserve(entry.target);
-  });
-}, { threshold: 0.12 });
-
-cards.forEach((card, index) => {
-  card.style.transitionDelay = reducedMotion.matches ? '0ms' : `${(index % 3) * 70}ms`;
-  revealObserver.observe(card);
-});
-
-const activeObserver = new IntersectionObserver((entries) => {
-  entries.forEach((entry) => {
-    if (!entry.isIntersecting) return;
-    const current = entry.target.dataset.sectionId;
-    navLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.section === current));
-  });
-}, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
-sections.forEach((section) => activeObserver.observe(section));
-
-const setMenu = (open) => {
-  if (!menuToggle || !nav) return;
-  menuToggle.setAttribute('aria-expanded', String(open));
-  document.body.classList.toggle('menu-open', open);
-  if (open) navLinks[0]?.focus();
+const translations = {
+  ar: {
+    title:'عبدالعزيز الحمداني — مطور الواجهات والذكاء الاصطناعي',skip:'انتقل إلى المحتوى',themeButton:'فاتح',menu:'القائمة',navHome:'الرئيسية',navWork:'الأعمال',navAbout:'عنّي',navServices:'القدرات',navContact:'تواصل',talk:'لنتحدث',location:'مسقط · عُمان',status:'متاح للعمل الهادف',heroEyebrow:'مطور واجهات أمامية · ذكاء اصطناعي تطبيقي',heroTitle1:'أجعل',heroTitle2:'الذكاء مفهوماً',heroTitle3:'ومفيداً.',heroValue:'أصمم واجهات واضحة لمنتجات مدعومة بالذكاء الاصطناعي — أحوّل الأفكار المعقدة إلى تجارب هادئة ومفيدة.',seeWork:'شاهد الأعمال المختارة',collaborate:'لنتعاون',guideTitle:'تعرّف على دليلك',ready:'جاهز',soundOff:'الصوت متوقف',guideCaption:'جولة قصيرة في<br /><strong>طريقة تفكيري وبنائي.</strong>',signal:'فضولي<br />بطبيعتي',intro:'مرحباً، أنا <strong>عبدالعزيز</strong> — مطور واجهات أمامية من عُمان أبني تجارب مدروسة تجعل الأنظمة المعقدة سهلة الاستخدام.',explore:'استكشف الأعمال',buildingLabel:'أبني حالياً',building:'أنظمة ذكاء اصطناعي وتجارب UX تراجع نفسها',workLabel:'أعمال مختارة',proof:'الدليل قبل الوعود',workTitle:'أشياء<br /><span>أبنيها وأدرسها.</span>',workIntro:'دراسات حالة صغيرة وصادقة تقع بين حرفة الواجهات ووضوح المنتج والذكاء الاصطناعي التطبيقي.',case1Top:'01 / نظام المحفظة',case1Visual:'موقع شخصي / تحريري داكن',frontendUx:'واجهات · تجربة مستخدم',portfolio:'محفظة',case1Body:'موقع شخصي يجعل تفكير المطور واتجاهه وفرصة المحادثة التالية واضحة في صفحة واحدة.',liveSite:'موقع حي',case2Top:'02 / تجربة الدليل',case2Visual:'الحركة كوسيلة توجيه',motion:'تفاعل · حركة',case2Title:'تعرّف على<br /><em>دليلك</em>',case2Body:'تفاعل فيديو صغير يمنح المحفظة مدخلاً إنسانياً دون أن تصبح الحركة شرطاً للفهم.',accessible:'متاح للجميع',case3Top:'03 / مسار بحثي',ongoing:'مستمر',case3Visual:'نجعل الأنظمة تشرح نفسها',aiResearch:'ذكاء اصطناعي · بحث',case3Title:'تفكير<br /><em>مرئي</em>',case3Body:'استكشاف مستمر لواجهات تساعد الناس على فهم مراجعة نظام الذكاء الاصطناعي وثقته والخطوة التالية المفيدة.',inProgress:'قيد التطوير',openSource:'مفتوح المصدر افتراضياً',github:'شاهد البناء على GitHub',remote:'عُمان · مناسب للعمل عن بُعد',perspective:'منظور',aboutEyebrow:'مسيرة تتطور عن قصد',aboutTitle:'أحوّل <em>فضولي</em><br />إلى <span>أشياء مفيدة.</span>',aboutP1:'رحلتي في البرمجة والذكاء الاصطناعي لا تزال في بدايتها، لكن أسئلتها كبيرة. أهتم بجعل التقنية المعقدة واضحة وإنسانية ومفيدة حقاً.',aboutP2:'أبني لأتعلم: أصمم تجارب الواجهات، أدرس أساسيات الذكاء الاصطناعي، وأختبر طرقاً أفضل لمساعدة الناس على فهم الأنظمة الذكية.',discuss:'ناقش مشروعاً',quote:'التعاون ليس طبقة إضافية.<br /><strong>إنه الطريقة التي نصمم بها مستقبلاً أفضل.</strong>',quoteAttribution:'— بوصلة شخصية',capabilities:'القدرات',servicesEyebrow:'من الفكرة الأولى إلى الواجهة المفيدة',servicesTitle:'مجموعة<br /><span>مركزة من المهارات.</span>',servicesIntro:'أجمع بين العناية البصرية وعقلية المتعلم لجعل المنتجات الرقمية أسهل استخداماً وفهماً وتحسيناً.',service1Title:'تطوير الواجهات',service1Body:'واجهات متجاوبة ومتاحة للجميع، لها رأي بصري واضح وتفاعل سلس.',service2Title:'تجارب مدعومة بالذكاء الاصطناعي',service2Body:'استكشاف ميزات عملية تدعم الناس دون إخفاء السياق المهم.',service3Title:'وضوح المنتج',service3Body:'تحويل الأفكار المعقدة إلى تدفقات واضحة وبنية معلومات مفيدة وخطوات تالية واثقة.',exploring:'ما أستكشفه',focusTitle:'الاتجاه<br /><span>الحالي</span>',focusIntro:'ثلاثة مجالات تدفعني إلى الأمام — من الطبقة المرئية للمنتج إلى المنطق الذي يعمل تحتها.',focus1Title:'تجارب<br />الواجهات',focus1Body:'واجهات بإيقاع ووضوح وشخصية — مصممة لتشعر بجودتها كما تعمل.',focus2Title:'ذكاء<br />اصطناعي تطبيقي',focus2Body:'أتعلم كيف يمكن للأدوات الذكية دعم الناس دون إخفاء الأجزاء المهمة.',learning:'تعلم',focus3Title:'تفكير<br />مرئي',focus3Body:'استكشاف واجهات تجعل مراجعة نظام الذكاء الاصطناعي وثقته أسهل فهماً.',research:'بحث',contactEyebrow:'لديك سؤال أو فكرة أو تحدٍ جيد؟',contactTitle:'لنجعل<br /><span>شيئاً واضحاً.</span>',barka:'بركاء، عُمان',footer:'واجهات · ذكاء اصطناعي · فضول',backTop:'العودة للأعلى ↑'
+  },
+  en: {
+    title:'Abdulaziz Al-Hamdani — Frontend & AI Developer',skip:'Skip to content',themeButton:'Light',menu:'Menu',navHome:'Home',navWork:'Work',navAbout:'About',navServices:'Capabilities',navContact:'Contact',talk:"Let's talk",location:'Muscat · Oman',status:'Open to meaningful work',heroEyebrow:'Frontend developer · Applied AI',heroTitle1:'I MAKE',heroTitle2:'AI FEEL',heroTitle3:'USEFUL.',heroValue:'I design clear interfaces for AI-powered products — turning complex ideas into calm, useful experiences.',seeWork:'See selected work',collaborate:"Let's collaborate",guideTitle:'Meet your guide',ready:'Ready',soundOff:'Sound off',guideCaption:'A short tour of<br /><strong>how I think and build.</strong>',signal:'curious<br />by default',intro:"Hi, I'm <strong>Abdulaziz</strong> — a frontend developer from Oman building thoughtful interfaces where complex systems feel simple to use.",explore:'Explore the work',buildingLabel:'Currently building',building:'AI systems & self-reviewing UX',workLabel:'Selected work',proof:'Proof before promises',workTitle:'Things I<br /><span>build and study.</span>',workIntro:'Small, honest case studies from the space between frontend craft, product clarity, and applied AI.',case1Top:'01 / Portfolio system',case1Visual:'dark editorial / personal site',frontendUx:'Frontend · UX',portfolio:'portfolio',case1Body:"A personal site designed to make a developer's thinking, direction, and next conversation visible in one scroll.",liveSite:'LIVE SITE',case2Top:'02 / Guide experiment',case2Visual:'motion as orientation',motion:'Interaction · Motion',case2Title:'Meet your<br /><em>guide</em>',case2Body:'A compact video interaction that gives a portfolio a human entry point without making motion a requirement for understanding.',accessible:'ACCESSIBLE BY DEFAULT',case3Top:'03 / Research thread',ongoing:'Ongoing',case3Visual:'making systems explain themselves',aiResearch:'Applied AI · Research',case3Title:'Visible<br /><em>reasoning</em>',case3Body:"An ongoing exploration of interfaces that help people understand an AI system's review, confidence, and next useful step.",inProgress:'IN PROGRESS',openSource:'Open source by default',github:'View the build on GitHub',remote:'Oman · Remote friendly',perspective:'Perspective',aboutEyebrow:'A work in progress, intentionally',aboutTitle:'I turn <em>curiosity</em><br />into <span>useful things.</span>',aboutP1:'My journey into programming and artificial intelligence is still young, but the questions are big. I care about making complex technology feel clear, human, and genuinely helpful.',aboutP2:'I build to learn: shaping frontend experiences, studying AI foundations, and testing better ways to help people understand intelligent systems.',discuss:'Discuss a project',quote:'Collaboration is not an extra layer.<br /><strong>It is how better futures get designed.</strong>',quoteAttribution:'— A personal north star',capabilities:'Capabilities',servicesEyebrow:'From first idea to useful interface',servicesTitle:'A focused<br /><span>set of skills.</span>',servicesIntro:"I combine visual care with a learner's mindset to make digital products easier to use, understand, and improve.",service1Title:'Frontend development',service1Body:'Responsive, accessible interfaces with a strong visual point of view and smooth interaction.',service2Title:'AI-powered experiences',service2Body:'Exploring practical AI features that support people without hiding the important context.',service3Title:'Product clarity',service3Body:'Turning complex ideas into clear flows, useful information architecture, and confident next steps.',exploring:"What I'm exploring",focusTitle:'Current<br /><span>direction</span>',focusIntro:'Three areas that keep pulling me forward — from the visible layer of a product to the reasoning underneath it.',focus1Title:'Frontend<br />experiences',focus1Body:'Interfaces with rhythm, clarity, and a point of view — built to feel as good as they work.',focus2Title:'Applied<br />AI',focus2Body:'Learning how intelligent tools can support people without hiding the important parts.',learning:'LEARNING',focus3Title:'Visible<br />reasoning',focus3Body:"Exploring interfaces that make an AI system's review and confidence easier to understand.",research:'RESEARCH',contactEyebrow:'Have a question, idea, or good challenge?',contactTitle:"Let's make<br /><span>something clear.</span>",barka:'Barka, Oman',footer:'Frontend · AI · Curiosity',backTop:'Back to top ↑'
+  }
 };
-menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
-navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
-document.addEventListener('keydown', (event) => {
-  if (event.key === 'Escape') setMenu(false);
-});
+let lang = localStorage.getItem('abda-lang') || 'ar';
+let theme = localStorage.getItem('abda-theme') || 'dark';
+const applyTheme = () => { root.dataset.theme = theme; const button = document.querySelector('[data-theme-toggle]'); if (!button) return; button.setAttribute('aria-label', theme === 'dark' ? (lang === 'ar' ? 'تفعيل الوضع الفاتح' : 'Switch to light mode') : (lang === 'ar' ? 'تفعيل الوضع الداكن' : 'Switch to dark mode')); button.querySelector('.theme-icon').textContent = theme === 'dark' ? '☼' : '☾'; const label = button.querySelector('[data-i18n]'); if (label) label.textContent = theme === 'dark' ? (lang === 'ar' ? 'فاتح' : 'Light') : (lang === 'ar' ? 'داكن' : 'Dark'); };
+const applyLanguage = () => { const dict = translations[lang]; root.lang = lang; root.dir = lang === 'ar' ? 'rtl' : 'ltr'; document.documentElement.style.setProperty('--body-font', lang === 'ar' ? "'Noto Kufi Arabic', 'Manrope', sans-serif" : "'Manrope', sans-serif"); document.querySelectorAll('[data-i18n]').forEach((el) => { const value = dict[el.dataset.i18n]; if (value) el.innerHTML = value; }); document.querySelector('[data-lang-toggle]').textContent = lang === 'ar' ? 'EN' : 'ع'; document.querySelector('[data-lang-toggle]').setAttribute('aria-label', lang === 'ar' ? 'Switch to English' : 'التبديل إلى العربية'); document.title = dict.title; applyTheme(); };
+applyTheme(); applyLanguage();
 
-const track = (eventName, detail = {}) => {
-  window.dispatchEvent(new CustomEvent('abda:event', { detail: { eventName, ...detail } }));
-};
-document.querySelectorAll('[data-event]').forEach((element) => {
-  element.addEventListener('click', () => track(element.dataset.event, { href: element.getAttribute('href') || null }));
-});
-
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', () => {
-    document.body.classList.add('is-navigating');
-    window.setTimeout(() => document.body.classList.remove('is-navigating'), reducedMotion.matches ? 0 : 500);
-  });
-});
-
-const guideVideo = document.querySelector('#guide-video');
-const guideSound = document.querySelector('.guide-sound');
-if (guideVideo && guideSound) {
-  let hasTrackedPlay = false;
-  const playGuide = () => {
-    guideVideo.play().then(() => {
-      if (!hasTrackedPlay) {
-        track('guide_video_play');
-        hasTrackedPlay = true;
-      }
-    }).catch(() => {});
-  };
-  const videoObserver = new IntersectionObserver((entries, observer) => {
-    if (!entries[0].isIntersecting) return;
-    playGuide();
-    observer.disconnect();
-  }, { threshold: 0.2 });
-  videoObserver.observe(guideVideo);
-  guideSound.addEventListener('click', () => {
-    guideVideo.muted = !guideVideo.muted;
-    const isOn = !guideVideo.muted;
-    guideSound.setAttribute('aria-pressed', String(isOn));
-    guideSound.setAttribute('aria-label', isOn ? 'Turn guide audio off' : 'Turn guide audio on');
-    guideSound.innerHTML = isOn ? 'Sound on <span>↗</span>' : 'Sound off <span>↗</span>';
-    track('guide_sound_toggle', { enabled: isOn });
-    if (isOn) playGuide();
-  });
-}
+autoReveal();
+function autoReveal() { const revealObserver = new IntersectionObserver((entries, observer) => { entries.forEach((entry) => { if (!entry.isIntersecting) return; entry.target.classList.add('is-visible'); observer.unobserve(entry.target); }); }, { threshold: 0.12 }); cards.forEach((card, index) => { card.style.transitionDelay = reducedMotion.matches ? '0ms' : `${(index % 3) * 70}ms`; revealObserver.observe(card); }); }
+const activeObserver = new IntersectionObserver((entries) => { entries.forEach((entry) => { if (!entry.isIntersecting) return; navLinks.forEach((link) => link.classList.toggle('is-active', link.dataset.section === entry.target.dataset.sectionId)); }); }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 }); sections.forEach((section) => activeObserver.observe(section));
+const setMenu = (open) => { if (!menuToggle || !nav) return; menuToggle.setAttribute('aria-expanded', String(open)); document.body.classList.toggle('menu-open', open); };
+menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true')); navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false))); document.addEventListener('keydown', (event) => { if (event.key === 'Escape') setMenu(false); });
+document.querySelector('[data-lang-toggle]')?.addEventListener('click', () => { lang = lang === 'ar' ? 'en' : 'ar'; localStorage.setItem('abda-lang', lang); applyLanguage(); });
+document.querySelector('[data-theme-toggle]')?.addEventListener('click', () => { theme = theme === 'dark' ? 'light' : 'dark'; localStorage.setItem('abda-theme', theme); applyTheme(); });
+const track = (eventName, detail = {}) => window.dispatchEvent(new CustomEvent('abda:event', { detail: { eventName, ...detail } }));
+document.querySelectorAll('[data-event]').forEach((element) => element.addEventListener('click', () => track(element.dataset.event, { href: element.getAttribute('href') || null })));
+document.querySelectorAll('a[href^="#"]').forEach((link) => link.addEventListener('click', () => { document.body.classList.add('is-navigating'); window.setTimeout(() => document.body.classList.remove('is-navigating'), reducedMotion.matches ? 0 : 500); }));
+const guideVideo = document.querySelector('#guide-video'); const guideSound = document.querySelector('.guide-sound');
+if (guideVideo && guideSound) { let hasTrackedPlay = false; const playGuide = () => guideVideo.play().then(() => { if (!hasTrackedPlay) { track('guide_video_play'); hasTrackedPlay = true; } }).catch(() => {}); const videoObserver = new IntersectionObserver((entries, observer) => { if (!entries[0].isIntersecting) return; playGuide(); observer.disconnect(); }, { threshold: 0.2 }); videoObserver.observe(guideVideo); guideSound.addEventListener('click', () => { guideVideo.muted = !guideVideo.muted; const isOn = !guideVideo.muted; guideSound.setAttribute('aria-pressed', String(isOn)); guideSound.innerHTML = `<span>${translations[lang][isOn ? 'soundOn' : 'soundOff'] || (isOn ? 'Sound on' : 'Sound off')}</span> <span>↗</span>`; track('guide_sound_toggle', { enabled: isOn }); if (isOn) playGuide(); }); }
+const tiltTargets = document.querySelectorAll('.hero-centerpiece, .work-card, .focus-card');
+if (!reducedMotion.matches) tiltTargets.forEach((target) => { target.addEventListener('pointermove', (event) => { const box = target.getBoundingClientRect(); const x = (event.clientX - box.left) / box.width - .5; const y = (event.clientY - box.top) / box.height - .5; target.style.setProperty('--rx', `${(y * -5).toFixed(2)}deg`); target.style.setProperty('--ry', `${(x * 6).toFixed(2)}deg`); }); target.addEventListener('pointerleave', () => { target.style.setProperty('--rx', '0deg'); target.style.setProperty('--ry', '0deg'); }); });
