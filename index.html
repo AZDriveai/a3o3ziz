@@ -3,57 +3,70 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="description" content="Abdulaziz Al-Hamdani — Frontend & AI Developer building thoughtful digital experiences." />
+  <meta name="description" content="Abdulaziz Al-Hamdani — Frontend and AI developer creating clear, useful digital experiences." />
+  <meta name="theme-color" content="#10100f" />
   <title>Abdulaziz Al-Hamdani — Frontend & AI Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link rel="stylesheet" href="styles.css" />
   <script defer src="script.js"></script>
 </head>
 <body>
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
-    <a class="brand" href="#top" aria-label="Abdulaziz Al-Hamdani home"><span>AZ</span><small>ABDAZIIZ</small></a>
+    <a class="brand" href="#top" aria-label="Abdulaziz Al-Hamdani home"><span>AZ</span><small>ABDAZIIZ / PORTFOLIO</small></a>
     <nav class="nav" aria-label="Primary navigation">
-      <a href="#about">About</a><a href="#focus">Focus</a><a href="#contact">Contact</a>
+      <a class="nav-link is-active" href="#top" data-section="top">Home</a>
+      <a class="nav-link" href="#about" data-section="about">About</a>
+      <a class="nav-link" href="#services" data-section="services">Services</a>
+      <a class="nav-link" href="#contact" data-section="contact">Contact</a>
     </nav>
     <a class="header-cta" href="mailto:openaziz00@gmail.com">Let's talk <span>↗</span></a>
   </header>
 
   <main id="top">
-    <section class="hero" aria-labelledby="hero-title">
-      <div class="hero-meta"><span>01 / 03</span><span>Muscat · Oman</span><span class="status"><i></i> Available for ideas</span></div>
+    <section class="hero section-anchor" aria-labelledby="hero-title" data-section-id="top">
+      <div class="hero-meta"><span>01 / 04</span><span>Muscat · Oman</span><span class="status"><i></i> Open to meaningful work</span></div>
       <div class="hero-title-wrap">
         <p class="eyebrow">Frontend engineer · AI explorer</p>
         <h1 id="hero-title"><span>BUILDING</span><span class="accent-outline">BETTER</span><span>THOUGHTS<span class="dot">.</span></span></h1>
       </div>
-      <div class="hero-centerpiece">
+      <div class="hero-centerpiece" aria-label="Portrait of Abdulaziz Al-Hamdani">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
         <div class="photo-frame"><img src="assets/profile.jpg" alt="Portrait of Abdulaziz Al-Hamdani" /><span class="photo-tag">A3O3ZIZ / 001</span></div>
         <div class="signal">✦<span>curious<br />by default</span></div>
       </div>
       <div class="hero-bottom">
         <p class="intro">Hi, I'm <strong>Abdulaziz</strong> — a passionate developer from Oman exploring the space where thoughtful interfaces meet useful artificial intelligence.</p>
-        <a class="scroll-link" href="#about"><span>Scroll to explore</span><b>↓</b></a>
+        <a class="scroll-link" href="#about"><span>Explore the work</span><b>↓</b></a>
         <div class="hero-note"><span>Currently learning</span><strong>AI systems &amp; self-reviewing UX</strong></div>
       </div>
     </section>
 
-    <section class="about section" id="about" aria-labelledby="about-title">
-      <div class="section-label"><span>02 / 03</span><span>Perspective</span></div>
-      <div class="about-grid"><div><p class="eyebrow">A work in progress, intentionally</p><h2 id="about-title">I turn <em>curiosity</em><br />into <span>useful things.</span></h2></div><div class="about-copy"><p>My journey into programming and artificial intelligence is still young, but the questions are big. I care about making complex technology feel clear, human, and genuinely helpful.</p><p>Right now, I am learning by building: studying the foundations of AI, shaping frontend experiences, and looking for better ways to help people understand how intelligent systems arrive at an answer.</p><a class="text-link" href="mailto:openaziz00@gmail.com">Start a conversation <span>↗</span></a></div></div>
+    <section class="about section section-anchor" id="about" aria-labelledby="about-title" data-section-id="about">
+      <div class="section-label"><span>02 / 04</span><span>Perspective</span></div>
+      <div class="about-grid"><div><p class="eyebrow">A work in progress, intentionally</p><h2 id="about-title">I turn <em>curiosity</em><br />into <span>useful things.</span></h2></div><div class="about-copy"><p>My journey into programming and artificial intelligence is still young, but the questions are big. I care about making complex technology feel clear, human, and genuinely helpful.</p><p>Right now, I am learning by building: studying the foundations of AI, shaping frontend experiences, and looking for better ways to help people understand intelligent systems.</p><a class="text-link" href="mailto:openaziz00@gmail.com">Start a conversation <span>↗</span></a></div></div>
       <div class="quote"><span>“</span><p>Collaboration is not an extra layer.<br /><strong>It is how better futures get designed.</strong></p><small>— A personal north star</small></div>
     </section>
 
-    <section class="focus section" id="focus" aria-labelledby="focus-title">
-      <div class="section-label"><span>03 / 03</span><span>What I'm exploring</span></div>
-      <div class="focus-head"><h2 id="focus-title">Current<br /><span>direction</span></h2><p>Three areas that keep pulling me forward — from the visible layer of a product to the reasoning underneath it.</p></div>
-      <div class="focus-grid">
-        <article class="focus-card featured"><div class="card-index">01</div><div class="card-icon">◌</div><h3>Frontend<br />experiences</h3><p>Interfaces with rhythm, clarity, and a point of view — built to feel as good as they work.</p><div class="card-foot"><span>UI / UX</span><span>→</span></div></article>
-        <article class="focus-card"><div class="card-index">02</div><div class="card-icon">✦</div><h3>Applied<br />AI</h3><p>Learning how intelligent tools can support people without hiding the important parts.</p><div class="card-foot"><span>LEARNING</span><span>→</span></div></article>
-        <article class="focus-card"><div class="card-index">03</div><div class="card-icon">⌁</div><h3>Visible<br />reasoning</h3><p>Exploring interfaces that make an AI system's review and confidence easier to understand.</p><div class="card-foot"><span>RESEARCH</span><span>→</span></div></article>
+    <section class="services section section-anchor" id="services" aria-labelledby="services-title" data-section-id="services">
+      <div class="section-label"><span>03 / 04</span><span>What I can help with</span></div>
+      <div class="services-intro"><div><p class="eyebrow">From first idea to useful interface</p><h2 id="services-title">A focused<br /><span>set of skills.</span></h2></div><p>I combine visual care with a learner's mindset to make digital products easier to use, understand, and improve.</p></div>
+      <div class="service-list">
+        <article class="service-row"><span class="service-number">01</span><div><h3>Frontend development</h3><p>Responsive, accessible interfaces with a strong visual point of view and smooth interaction.</p></div><span class="service-arrow">↗</span></article>
+        <article class="service-row"><span class="service-number">02</span><div><h3>AI-powered experiences</h3><p>Exploring practical AI features that support people without hiding the important context.</p></div><span class="service-arrow">↗</span></article>
+        <article class="service-row"><span class="service-number">03</span><div><h3>Product clarity</h3><p>Turning complex ideas into clear flows, useful information architecture, and confident next steps.</p></div><span class="service-arrow">↗</span></article>
       </div>
     </section>
 
-    <section class="contact section" id="contact" aria-labelledby="contact-title"><div class="contact-orb"></div><p class="eyebrow">Have a question, idea, or good challenge?</p><h2 id="contact-title">Let's make<br /><span>something clear.</span></h2><a class="contact-button" href="mailto:openaziz00@gmail.com">openaziz00@gmail.com <span>↗</span></a><div class="contact-meta"><a href="tel:+96894642987">+968 9464 2987</a><span>Barka, Oman</span><span>© 2025 AbdaZiiz</span></div></section>
+    <section class="focus section section-anchor" id="focus" aria-labelledby="focus-title" data-section-id="focus">
+      <div class="section-label"><span>04 / 04</span><span>What I'm exploring</span></div>
+      <div class="focus-head"><h2 id="focus-title">Current<br /><span>direction</span></h2><p>Three areas that keep pulling me forward — from the visible layer of a product to the reasoning underneath it.</p></div>
+      <div class="focus-grid"><article class="focus-card featured"><div class="card-index">01</div><div class="card-icon">◌</div><h3>Frontend<br />experiences</h3><p>Interfaces with rhythm, clarity, and a point of view — built to feel as good as they work.</p><div class="card-foot"><span>UI / UX</span><span>→</span></div></article><article class="focus-card"><div class="card-index">02</div><div class="card-icon">✦</div><h3>Applied<br />AI</h3><p>Learning how intelligent tools can support people without hiding the important parts.</p><div class="card-foot"><span>LEARNING</span><span>→</span></div></article><article class="focus-card"><div class="card-index">03</div><div class="card-icon">⌁</div><h3>Visible<br />reasoning</h3><p>Exploring interfaces that make an AI system's review and confidence easier to understand.</p><div class="card-foot"><span>RESEARCH</span><span>→</span></div></article></div>
+    </section>
+
+    <section class="contact section section-anchor" id="contact" aria-labelledby="contact-title" data-section-id="contact"><div class="contact-orb"></div><p class="eyebrow">Have a question, idea, or good challenge?</p><h2 id="contact-title">Let's make<br /><span>something clear.</span></h2><a class="contact-button" href="mailto:openaziz00@gmail.com">openaziz00@gmail.com <span>↗</span></a><div class="contact-meta"><a href="tel:+96894642987">+968 9464 2987</a><span>Barka, Oman</span><span>© 2025 AbdaZiiz</span></div></section>
   </main>
   <footer class="site-footer"><span>ABDAZIIZ</span><span>Frontend · AI · Curiosity</span><a href="#top">Back to top ↑</a></footer>
 </body>
