@@ -24,3 +24,15 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     window.setTimeout(() => document.body.classList.remove('is-navigating'), 500);
   });
 });
+
+
+const guideVideo = document.querySelector('#guide-video');
+const guideSound = document.querySelector('.guide-sound');
+if (guideVideo && guideSound) {
+  guideSound.addEventListener('click', () => {
+    guideVideo.muted = !guideVideo.muted;
+    guideSound.setAttribute('aria-pressed', String(!guideVideo.muted));
+    guideSound.innerHTML = guideVideo.muted ? 'Sound off <span>↗</span>' : 'Sound on <span>↗</span>';
+    if (!guideVideo.muted) guideVideo.play().catch(() => {});
+  });
+}
