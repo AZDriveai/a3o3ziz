@@ -5,10 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="description" content="Abdulaziz Al-Hamdani — frontend developer from Oman designing clear interfaces for AI-powered products." />
   <meta name="theme-color" content="#10100f" />
+  <meta name="color-scheme" content="dark" />
+  <meta property="og:type" content="website" />
   <meta property="og:title" content="Abdulaziz Al-Hamdani — Frontend & AI Developer" />
   <meta property="og:description" content="Clear interfaces for AI-powered products, from Oman." />
   <meta property="og:image" content="assets/profile.jpg" />
   <link rel="canonical" href="https://azdriveai.github.io/a3o3ziz/" />
+  <link rel="icon" href="assets/profile.jpg" type="image/jpeg" />
   <title>Abdulaziz Al-Hamdani — Frontend & AI Developer</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -17,10 +20,12 @@
   <script defer src="script.js"></script>
 </head>
 <body>
+  <a class="skip-link" href="#top">Skip to content</a>
   <div class="grain" aria-hidden="true"></div>
   <header class="site-header">
     <a class="brand" href="#top" aria-label="Abdulaziz Al-Hamdani home"><span>AZ</span><small>ABDAZIIZ / PORTFOLIO</small></a>
-    <nav class="nav" aria-label="Primary navigation">
+    <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="primary-nav"><span>Menu</span><i></i></button>
+    <nav class="nav" id="primary-nav" aria-label="Primary navigation">
       <a class="nav-link is-active" href="#top" data-section="top">Home</a>
       <a class="nav-link" href="#work" data-section="work">Work</a>
       <a class="nav-link" href="#about" data-section="about">About</a>
@@ -42,17 +47,17 @@
       <aside class="guide-card" aria-label="Welcome guide video">
         <div class="guide-card-head"><span>Meet your guide</span><span class="guide-live"><i></i> Ready</span></div>
         <div class="guide-video-wrap">
-          <video id="guide-video" class="guide-video" autoplay muted loop playsinline preload="none" poster="assets/anime-guide-reference.webp">
+          <video id="guide-video" class="guide-video" autoplay muted loop playsinline preload="metadata" poster="assets/anime-guide-reference.webp">
             <source src="assets/anime-guide-intro-with-audio.mp4" type="video/mp4" />
             Your browser does not support embedded video.
           </video>
           <button class="guide-sound" type="button" aria-label="Turn guide audio on" aria-pressed="false">Sound off <span>↗</span></button>
         </div>
-        <p class="guide-caption">A 90-second tour of<br /><strong>how I think and build.</strong></p>
+        <p class="guide-caption">A short tour of<br /><strong>how I think and build.</strong></p>
       </aside>
-      <div class="hero-centerpiece" aria-label="Portrait of Abdulaziz Al-Hamdani">
+      <div class="hero-centerpiece" aria-hidden="true">
         <div class="orbit orbit-one"></div><div class="orbit orbit-two"></div>
-        <div class="photo-frame"><img src="assets/profile.jpg" width="500" height="500" alt="Portrait of Abdulaziz Al-Hamdani" /><span class="photo-tag">A3O3ZIZ / 001</span></div>
+        <div class="photo-frame"><img src="assets/profile.jpg" width="500" height="500" alt="" fetchpriority="high" /><span class="photo-tag">A3O3ZIZ / 001</span></div>
         <div class="signal">✦<span>curious<br />by default</span></div>
       </div>
       <div class="hero-bottom">
@@ -82,7 +87,7 @@
     <section class="services section section-anchor" id="services" aria-labelledby="services-title" data-section-id="services">
       <div class="section-label"><span>04 / 06</span><span>Capabilities</span></div>
       <div class="services-intro"><div><p class="eyebrow">From first idea to useful interface</p><h2 id="services-title">A focused<br /><span>set of skills.</span></h2></div><p>I combine visual care with a learner's mindset to make digital products easier to use, understand, and improve.</p></div>
-      <div class="service-list"><article class="service-row"><span class="service-number">01</span><div><h3>Frontend development</h3><p>Responsive, accessible interfaces with a strong visual point of view and smooth interaction.</p></div><span class="service-arrow">↗</span></article><article class="service-row"><span class="service-number">02</span><div><h3>AI-powered experiences</h3><p>Exploring practical AI features that support people without hiding the important context.</p></div><span class="service-arrow">↗</span></article><article class="service-row"><span class="service-number">03</span><div><h3>Product clarity</h3><p>Turning complex ideas into clear flows, useful information architecture, and confident next steps.</p></div><span class="service-arrow">↗</span></article></div>
+      <div class="service-list"><article class="service-row"><span class="service-number">01</span><div><h3>Frontend development</h3><p>Responsive, accessible interfaces with a strong visual point of view and smooth interaction.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">02</span><div><h3>AI-powered experiences</h3><p>Exploring practical AI features that support people without hiding the important context.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article><article class="service-row"><span class="service-number">03</span><div><h3>Product clarity</h3><p>Turning complex ideas into clear flows, useful information architecture, and confident next steps.</p></div><span class="service-arrow" aria-hidden="true">↗</span></article></div>
     </section>
 
     <section class="focus section section-anchor" id="focus" aria-labelledby="focus-title" data-section-id="focus">

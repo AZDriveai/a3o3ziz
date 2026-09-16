@@ -1,6 +1,9 @@
+const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
 const cards = document.querySelectorAll('.focus-card, .work-card');
 const sections = document.querySelectorAll('.section-anchor');
 const navLinks = document.querySelectorAll('.nav-link');
+const menuToggle = document.querySelector('.menu-toggle');
+const nav = document.querySelector('#primary-nav');
 
 const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
@@ -9,8 +12,9 @@ const revealObserver = new IntersectionObserver((entries, observer) => {
     observer.unobserve(entry.target);
   });
 }, { threshold: 0.12 });
+
 cards.forEach((card, index) => {
-  card.style.transitionDelay = `${(index % 3) * 70}ms`;
+  card.style.transitionDelay = reducedMotion.matches ? '0ms' : `${(index % 3) * 70}ms`;
   revealObserver.observe(card);
 });
 
@@ -23,14 +27,18 @@ const activeObserver = new IntersectionObserver((entries) => {
 }, { rootMargin: '-35% 0px -55% 0px', threshold: 0 });
 sections.forEach((section) => activeObserver.observe(section));
 
-document.querySelectorAll('a[href^="#"]').forEach((link) => {
-  link.addEventListener('click', () => {
-    document.body.classList.add('is-navigating');
-    window.setTimeout(() => document.body.classList.remove('is-navigating'), 500);
-  });
+const setMenu = (open) => {
+  if (!menuToggle || !nav) return;
+  menuToggle.setAttribute('aria-expanded', String(open));
+  document.body.classList.toggle('menu-open', open);
+  if (open) navLinks[0]?.focus();
+};
+menuToggle?.addEventListener('click', () => setMenu(menuToggle.getAttribute('aria-expanded') !== 'true'));
+navLinks.forEach((link) => link.addEventListener('click', () => setMenu(false)));
+document.addEventListener('keydown', (event) => {
+  if (event.key === 'Escape') setMenu(false);
 });
 
-// Privacy-friendly analytics hook: integrates with a future analytics provider without loading one today.
 const track = (eventName, detail = {}) => {
   window.dispatchEvent(new CustomEvent('abda:event', { detail: { eventName, ...detail } }));
 };
@@ -38,12 +46,24 @@ document.querySelectorAll('[data-event]').forEach((element) => {
   element.addEventListener('click', () => track(element.dataset.event, { href: element.getAttribute('href') || null }));
 });
 
+document.querySelectorAll('a[href^="#"]').forEach((link) => {
+  link.addEventListener('click', () => {
+    document.body.classList.add('is-navigating');
+    window.setTimeout(() => document.body.classList.remove('is-navigating'), reducedMotion.matches ? 0 : 500);
+  });
+});
+
 const guideVideo = document.querySelector('#guide-video');
 const guideSound = document.querySelector('.guide-sound');
 if (guideVideo && guideSound) {
+  let hasTrackedPlay = false;
   const playGuide = () => {
-    guideVideo.play().catch(() => {});
-    track('guide_video_play');
+    guideVideo.play().then(() => {
+      if (!hasTrackedPlay) {
+        track('guide_video_play');
+        hasTrackedPlay = true;
+      }
+    }).catch(() => {});
   };
   const videoObserver = new IntersectionObserver((entries, observer) => {
     if (!entries[0].isIntersecting) return;
