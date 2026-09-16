@@ -1,13 +1,18 @@
-const cards = document.querySelectorAll('.focus-card');
+const cards = document.querySelectorAll('.focus-card, .work-card');
 const sections = document.querySelectorAll('.section-anchor');
 const navLinks = document.querySelectorAll('.nav-link');
 
-const revealObserver = new IntersectionObserver((entries) => {
+const revealObserver = new IntersectionObserver((entries, observer) => {
   entries.forEach((entry) => {
-    if (entry.isIntersecting) entry.target.classList.add('is-visible');
+    if (!entry.isIntersecting) return;
+    entry.target.classList.add('is-visible');
+    observer.unobserve(entry.target);
   });
-}, { threshold: 0.14 });
-cards.forEach((card, index) => { card.style.transitionDelay = `${index * 70}ms`; revealObserver.observe(card); });
+}, { threshold: 0.12 });
+cards.forEach((card, index) => {
+  card.style.transitionDelay = `${(index % 3) * 70}ms`;
+  revealObserver.observe(card);
+});
 
 const activeObserver = new IntersectionObserver((entries) => {
   entries.forEach((entry) => {
@@ -25,14 +30,34 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+// Privacy-friendly analytics hook: integrates with a future analytics provider without loading one today.
+const track = (eventName, detail = {}) => {
+  window.dispatchEvent(new CustomEvent('abda:event', { detail: { eventName, ...detail } }));
+};
+document.querySelectorAll('[data-event]').forEach((element) => {
+  element.addEventListener('click', () => track(element.dataset.event, { href: element.getAttribute('href') || null }));
+});
 
 const guideVideo = document.querySelector('#guide-video');
 const guideSound = document.querySelector('.guide-sound');
 if (guideVideo && guideSound) {
+  const playGuide = () => {
+    guideVideo.play().catch(() => {});
+    track('guide_video_play');
+  };
+  const videoObserver = new IntersectionObserver((entries, observer) => {
+    if (!entries[0].isIntersecting) return;
+    playGuide();
+    observer.disconnect();
+  }, { threshold: 0.2 });
+  videoObserver.observe(guideVideo);
   guideSound.addEventListener('click', () => {
     guideVideo.muted = !guideVideo.muted;
-    guideSound.setAttribute('aria-pressed', String(!guideVideo.muted));
-    guideSound.innerHTML = guideVideo.muted ? 'Sound off <span>↗</span>' : 'Sound on <span>↗</span>';
-    if (!guideVideo.muted) guideVideo.play().catch(() => {});
+    const isOn = !guideVideo.muted;
+    guideSound.setAttribute('aria-pressed', String(isOn));
+    guideSound.setAttribute('aria-label', isOn ? 'Turn guide audio off' : 'Turn guide audio on');
+    guideSound.innerHTML = isOn ? 'Sound on <span>↗</span>' : 'Sound off <span>↗</span>';
+    track('guide_sound_toggle', { enabled: isOn });
+    if (isOn) playGuide();
   });
 }
